@@ -1,0 +1,546 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif; /* Updated font family */
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255, 245, 237); /* Background color */
+    color: #213472; /* Font color */
+}
+html {
+    scroll-behavior: smooth; /* Smooth scrolling behavior */
+}
+
+
+nav {
+    background-color: rgba(255, 245, 237, 0.6); /* Transparent background with the same color as the body */
+    backdrop-filter: blur(10px); /* Glass effect */
+    padding: 1em 1em; /* Adjusted padding for better spacing */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: space-between; /* Space between logo and nav list */
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+    z-index:1000; /* Ensure the navbar is above other content */
+}
+.logo {
+    height: 100px; /* Logo height */
+    margin-right: 20px; /* Add some space between the logo and the nav list */
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap if necessary */
+    color: #213472; /* Updated font color to match .hero */
+}
+nav ul li {
+    margin: 0 0.5em; /* Reduced margin for better spacing */
+}
+nav ul li a {
+    color: #213472; /* Updated color */
+    text-decoration: none;
+    white-space: nowrap; /* Prevent text wrapping */
+    display: block; /* Ensure the entire link is clickable */
+    padding: 0.5em 1em; /* Add padding to the links */
+    margin: 0.5em; /* Add margin to the links */
+    border-radius: 10px; /* Add rounded corners */
+    transition: background-color 0.3s ease, border-radius 0.3s ease; /* Smooth transition */
+}
+/* Styles for nav links on hover */
+nav a:hover {
+    background-color: rgb(242, 218, 201); /* Updated color on hover */
+}
+
+/* Hide other li elements in the main nav when menu-btn is visible */
+@media (max-width: 800px) {
+    nav > ul:last-child > li:not(:last-child) {
+        display: none; /* Hide all li elements except the last one (menu-btn) */
+    }
+    .menu-btn {
+        display: block; /* Ensure the menu-btn is visible */
+    }
+}
+
+/* Hide menu-btn when page width is greater than 800px */
+@media (min-width: 801px) {
+    .menu-btn {
+        display: none; /* Hide the menu-btn image */
+    }
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 1001;
+    background-color: rgb(255, 245, 237, 0.9);
+    backdrop-filter: blur(10px); /* Glass effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 2em;
+    transition: right 0.3s ease-in-out, opacity 0.3s ease; /* Smooth transition effect */
+    opacity: 0; 
+}
+.sidebar.active {
+    right: 0;
+    opacity: 1;
+    display: flex;
+}
+
+.sidebar ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column; /* Allow items to wrap if necessary */
+        width: 100%;
+        color: #213472; /* Updated font color to match .hero */
+}
+.sidebar li {
+    width: 100%;
+    padding: 1em 0;
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 3em;
+}
+
+
+
+header {
+    background: url('imgs/headerback.jpg') no-repeat center center; /* Add background image */
+    background-size: cover; /* Cover the entire header */
+    background-attachment: fixed; /* Fix the background image in place */
+    margin-top: 8em; /* Increased margin to prevent header from hiding under navbar */
+    padding: 16em 0;
+    text-align: center;
+}
+
+@media (max-width: 430px) {
+    header {
+        background-attachment: scroll; /* Change attachment to scroll for smaller screens */
+        background-position: center top; /* Focus on the top center of the image */
+        padding: 8em 0; /* Adjust padding for smaller screens */
+    }
+}
+
+.hero {
+    background-color: rgb(255, 245, 237); /* Background color matching the webpage */
+    padding: 2em;
+    border-radius: 10px;
+    display: inline-block; /* Center the hero div */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for 3D effect */
+}
+.hero h1 {
+    font-family: 'Poppins', sans-serif; /* Updated font family */
+    font-size: 1.5em; /* Smaller size */
+    margin: 0;
+    color: #213472; /* Updated color */
+    text-decoration: underline; /* Underlined */
+    text-decoration-thickness: 2px; /* Thickness of the underline */
+    text-underline-offset: 0.2em; /* Space between underline and text */
+    font-weight: normal; /* Normal font weight */
+}
+.hero h2 {
+    font-size: 2.5em; /* Increased size */
+    margin: 0.5em 0;
+    color: #213472; /* Updated color */
+}
+.hero h3 {
+    font-family: 'Poppins', sans-serif; /* Updated font family */
+    font-size: 1.2em; /* Smaller size */
+    margin: 0.5em 0;
+    color: #213472; /* Updated color */
+    font-weight: normal; /* Lighter font weight */
+}
+main {
+    padding: 1em;
+}
+section {
+    margin-bottom: 1em;
+}
+
+
+.services {
+    display: grid;
+    grid-template-rows: auto 1fr; /* Reserve space for the title and flex container */
+    gap: 2em; /* Add spacing between the items */
+    padding: 1em;
+    /*background-color: #fff;  Optional: Add a background color */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); Optional: Add a subtle shadow */
+    font-family: 'Poppins', sans-serif; /* Use the same font family */
+    position: relative; /* Make the container relative for absolute positioning */
+    color: #213472; /* Ensure consistent font color */
+}
+
+.services h1 {
+    font-size: 2em; /* Adjust the font size */
+    color: #213472; /* Matching the color scheme */
+    text-decoration: underline; /* Underline the heading */
+    text-align: center; /* Center the text */
+    margin: 0; /* Remove default margin */
+}
+
+.services h2 {
+    font-size: 1.5em; /* Adjust the font size */
+    color: #213472; /* Updated font color */
+}
+
+.services h3 {
+    font-size: 1.2em; /* Adjust the font size */
+    color: #213472; /* Updated font color */
+}
+
+.services p {
+    font-size: 1em; /* Adjust the font size */
+    color: #213472; /* Updated font color */
+}
+
+.services img[alt="PDF"] {
+    width: 50px; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+.Konzepte a {
+    display: block; /* Make each link take up the full width and stack vertically */
+    margin-bottom: 1em; /* Add space between the stacked items */
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensure items wrap to the next line if needed */
+    gap: 2em; /* Add spacing between the items */
+    justify-content: center; /* Center the items horizontally */
+}
+
+.flex-container > div {
+    flex: 1 1 300px; /* Make each child element take up equal space, with a minimum width of 300px */
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+    text-align: center; /* Center the content within each child element */
+    color: #213472; /* Updated font color */
+}
+
+.flex-container img {
+    max-width: 100%; /* Ensure images do not overflow their containers */
+    border-radius: 10px; /* Optional: Add rounded corners to images */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow to images */
+}
+
+
+
+
+.about-us {
+    display: flex;
+    flex-direction: column; /* Stack the rows vertically */
+    align-items: center; /* Center the rows horizontally */
+    padding: 2em;
+    background-color: #fff; /* Background color for the section */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for 3D effect */
+    margin-bottom: 2em; /* Space below the section */
+}
+
+.about-row {
+    display: flex;
+    margin-bottom: 2em; /* Add space between the rows */
+    width: 100%; /* Ensure the rows take up full width */
+}
+
+.about-row:nth-child(even) {
+    flex-direction: row-reverse; /* Reverse the order for every even row */
+}
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+    margin: 0 2em; /* Add space between the image and text */
+}
+
+.about-image img {
+    width: 100%; /* Ensure image takes up full width of its container */
+    max-width: 600px; /* Set a maximum width for the images */
+    border-radius: 10px; /* Rounded corners for the image */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for the image */
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Add a smooth transition effect */
+}
+
+.about-text {
+    flex: 2;
+    text-align: center; /* Align text to the center */
+}
+
+.about-text h2 {
+    font-size: 2em; /* Adjust the font size */
+    color: #213472; /* Matching the color scheme */
+    margin-bottom: 0.5em; /* Space below the heading */
+    text-decoration: underline; /* Underline the heading */
+}
+
+.about-text p {
+    font-size: 1.2em; /* Adjust the font size */
+    color: #213472; /* Gray color for the text */
+    line-height: 1.6; /* Increase line height for better readability */
+}
+.end-line {
+    border-top: 1px solid #213472; /* Adjust color and thickness */
+    margin-top: 1em; /* Space above the line */
+}
+/* Media query for small screens */
+@media (max-width: 1100px) {
+    .about-row {
+        flex-direction: column !important; /* Stack the text and image vertically and override row-reverse */
+        align-items: center; /* Center-align elements */
+        text-align: center; /* Center-align text */
+    }
+
+    .about-image {
+        margin: 2em 0; /* Add space above and below the image */
+    }
+
+    .about-text,
+    .about-image {
+        width: 100%; /* Ensure full width for text and images */
+    }
+}
+
+
+
+.quote-section-header {
+    background: url('imgs/quoteback.jpg') no-repeat center center; /* Add background image with fixed attachment */
+    background-size: cover; /* Cover the entire section */
+    background-attachment: fixed; /* Fix the background image in place */
+    padding: 10em 0;
+    text-align: center;
+    margin-bottom: 1em;
+    position: relative; /* Ensure quotes are positioned relative to this section */
+    overflow: hidden; /* Hide overflow content */
+    height: 50vh; /* Adjusted height to 50% of the viewport */
+}
+
+.quote {
+    background-color: rgba(255, 245, 237, 0.8); /* Semi-transparent background color matching the webpage */
+    padding: 2em;
+    border-radius: 10px;
+    display: none; /* Hide all quotes initially */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for 3D effect */
+    position: absolute; /* Position quotes absolutely within the section */
+    width: 65%; /* Ensure quotes take up 65% of the section width */
+    left: 100%; /* Start off-screen to the right */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Center vertically */
+    transition: none; /* Remove any conflicting transition styles */
+}
+
+.quote.active {
+    display: block; /* Show the active quote */
+    left: 14%; /* Move the active quote to the center */
+    animation: slideIn 1s ease-in-out; /* Add the slide-in animation */
+}
+
+@keyframes slideIn {
+    from {
+        left: 100%; /* Start off-screen to the right */
+    }
+    to {
+        left: 14%; /* End at the correct position */
+    }
+}
+
+.quote.inactive {
+    display: block; /* Ensure the inactive quote is shown for the animation */
+    left: -100%; /* Move the inactive quote off-screen to the left */
+    animation: slideOut 1s ease-in-out; /* Add the slide-out animation */
+}
+
+@keyframes slideOut {
+    from {
+        left: 10%; /* Start at the correct position */
+    }
+    to {
+        left: -100%; /* End off-screen to the left */
+    }
+}
+
+.quote h1{
+    font-family: 'Poppins', sans-serif; /* Updated font family */
+    font-size: 2em; /* Font size */
+    text-decoration: underline; /* Underlined */
+    color: #213472; /* Font color */
+    font-weight: normal; /* Normal font weight */
+    text-align: center; /* Center the text */
+}
+.quote h2 {
+    font-family: 'Poppins', sans-serif; /* Updated font family */
+    font-size: 1.5em; /* Font size */
+    margin: 0.5em 0;
+    color: #213472; /* Font color */
+    font-weight: normal; /* Normal font weight */
+    text-align: center; /* Center the text */
+    font-style: italic; /* Italicize the text */
+}
+.quote p {
+    font-family: 'Poppins', sans-serif; /* Updated font family */
+    font-size: 1.5em; /* Font size */
+    margin: 0;
+    color: #213472; /* Font color */
+    font-weight: normal; /* Normal font weight */
+    text-align: center; /* Center the text */
+}
+/* Media query for small screens */
+@media (max-width: 500px) {
+    .quote-section-header {
+        background-attachment: scroll; /* Change attachment to scroll for smaller screens */
+        background-position: center top; /* Focus on the top center of the image */
+        padding: 8em 0; /* Adjust padding for smaller screens */
+    }
+    .quote {
+        font-size: 1.2em; /* Reduce font size */
+        line-height: 1.4; /* Adjust line height */
+        padding: 1em; /* Reduce padding */
+        max-width: 100%; /* Ensure the quote takes up full width */
+    }
+    .quote p {
+        font-family: 'Poppins', sans-serif; /* Updated font family */
+        font-size: 1em; /* Font size */
+        margin: 0;
+        color: #213472; /* Font color */
+        font-weight: normal; /* Normal font weight */
+        text-align: center; /* Center the text */
+    }
+    .quote h2 {
+        font-family: 'Poppins', sans-serif; /* Updated font family */
+        font-size: 1em; /* Font size */
+        margin: 0.5em 0;
+        color: #213472; /* Font color */
+        font-weight: normal; /* Normal font weight */
+        text-align: center; /* Center the text */
+        font-style: italic; /* Italicize the text */
+    }
+    .quote h1{
+        font-family: 'Poppins', sans-serif; /* Updated font family */
+        font-size: 1.5em; /* Font size */
+        text-decoration: underline; /* Underlined */
+        color: #213472; /* Font color */
+        font-weight: normal; /* Normal font weight */
+        text-align: center; /* Center the text */
+    }
+}
+
+.contact-us {
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for 3D effect */
+}
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 1em;
+}
+form {
+    flex: 1;
+    margin-right: 2em;
+}
+form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+form input, form textarea {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+form button {
+    padding: 0.5em 1em;
+    background-color: #213472;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+form button:hover {
+    background-color: #172c59;
+}
+.contact-image {
+    flex: 1;
+    margin: 1em;
+}
+.contact-info {
+    flex: 1;
+    text-align: right; /* Align text to the right */
+    color: #213472; /* Updated font color to match .hero */
+}
+.contact-info ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center; /* Center the text inside the ul */
+}
+.contact-info ul li {
+    margin-bottom: 1em;
+    font-weight: bold;
+}
+/* Media query for screens smaller than 800px */
+@media (max-width: 800px) {
+    .contact-container {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center items horizontally */
+    }
+
+    .contact-image {
+        order: 1; /* Place image above contact info */
+    }
+
+    .contact-info {
+        order: 2; /* Place contact info below the image */
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        justify-content: center; /* Center items vertically */
+        text-align: center; /* Center text */
+    }
+}
+
+footer {
+    background-color: #333333; /* Adjust this color if needed */
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    width: 100%;
+    bottom: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
