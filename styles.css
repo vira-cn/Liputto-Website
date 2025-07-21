@@ -118,6 +118,11 @@ nav a:hover {
     margin-bottom: 3em;
 }
 
+.spline-overlay {
+  width: 4000px; /* Anpassung auf Größe deiner Szene */
+  height: 220px;
+  pointer-events: none; /* Blockiert keine Klicks auf andere Elemente */
+}
 
 
 header {

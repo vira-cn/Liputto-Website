@@ -1,24 +1,30 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get form data
+
+    
+    if (!empty($_POST['website'])) {
+        exit("Spam erkannt. Nachricht nicht versendet.");
+    }
+
+    // Formulardaten
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $message = $_POST['message'];
 
-    // Set the recipient email address
+    // Empfängeradresse
     $to = "kita@liputto.com";
-    
-    // Set the email subject
-    $subject = "New Contact Form Submission";
-    
-    // Construct the email body
+
+    // Betreff
+    $subject = "Kontaktformular Liputto";
+
+    // E-Mail-Inhalt
     $body = "Name: $name\nEmail: $email\nPhone: $phone\nMessage: $message";
 
-    // Set email headers
+    // Header setzen
     $headers = "From: $email";
 
-    // Send the email
+    // E-Mail versenden
     if (mail($to, $subject, $body, $headers)) {
         echo "Message sent successfully!";
     } else {
